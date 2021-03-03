@@ -21,6 +21,10 @@ import (
 	"links"
 )
 
+/*
+为了导入links包
+在GOPATH增加当前工程的路径 新增src目录 在src目录下增加package links
+*/
 //!+breadthFirst
 // breadthFirst calls f for each item in the worklist.
 // Any items returned by f are added to the worklist.
