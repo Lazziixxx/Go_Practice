@@ -7,6 +7,12 @@ import (
 	"golang.org/x/net/html"
 )
 
+/*
+包含golang.org/x/net/html的方法
+在$GOROOT/src目录下新建golang.org/x/net目录
+将从https://github.com/golang/net下载的内容拷贝到目录即可
+ */
+
 // Extract makes an HTTP GET request to the specified URL, parses
 // the response as HTML, and returns the links in the HTML document.
 func Extract(url string) ([]string, error) {
