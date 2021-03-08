@@ -83,6 +83,7 @@ func BenchmarkCompareCommon(b *testing.B) {
 }
 
 func BenchmarkCompareReflect(b *testing.B) {
+	//b.N对每个用例都不一样 如果用例能在1s内完成，b.N的值会以1，2，3，5，20，30....增加
 	for i := 0; i < b.N; i++ {
 		for _, value := range tests {
 			if value.out != compareDeflect(value.ins1, value.ins2) {
@@ -91,3 +92,22 @@ func BenchmarkCompareReflect(b *testing.B) {
 		}
 	}
 }
+
+/*
+go test -bench . 
+运行当前目录下的benchmark用例
+
+go test -bench='xxx$' .
+运行以xxx结尾的benchmark用例
+
+修改绑核：
+go test -bench='xxx$' -cpu=2,4 .
+增加-cpu选型 即GOMAXPROCS CPU核数
+
+提升测试准确度:
+go test -bench='xxx$' -benchtime=5s .
+benchmark默认测试时间是1s 可以使用-benchtime=5s指定测试时间，提升准确度（实际测试时间比5s会长，编译执行销毁需要时间）
+-benchtime=100x  也可以指定为测试100次
+go test -bench='xxx$' -benchtime=5s -count=3 .
+设置进行benchmark的轮数 进行三伦benchmark
+*/
