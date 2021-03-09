@@ -38,8 +38,8 @@ func testLastChars(t *testing.T, f func([]int) []int) {
 	for i := 0; i < 100; i++ {
 		nums := generateWithCap(128 * 1024)
 		ans = append(ans, f(nums))
-		//runtime.GC()
-	}
+		//runtime.GC() //显示的调用GC,对于Slice方式来说无效果 对于Copy方式效果明显
+	} 
 	printMem(t)
 	_ = ans
 }
