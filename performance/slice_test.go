@@ -6,6 +6,12 @@ https://ueokande.github.io/go-slice-tricks/
 /*切片的性能陷阱*/
 package main
 
+import (
+	"math/rand"
+	"time"
+	"testing"
+	"runtime"
+)
 func lastNumBySlice(n []int) []int{
 	return n[len(n) - 2:] //返回了原数组的切片
 }
