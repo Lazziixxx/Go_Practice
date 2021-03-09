@@ -113,10 +113,10 @@ BenchmarkRangeStruct-12             4450            237567 ns/op
 简单验证：可以通过for和range对一个数组每个元素进行加操作，最后dump出数组，发现range中对数组的操作没有生效
 */
 
-func generateItems(n int) []*Item {
-	items := make([]*Item, 0, n)
+func generateItems(n int) []*item {
+	items := make([]*item, 0, n)
 	for i := 0; i < n; i++ {
-		items = append(items, &Item{id: i})
+		items = append(items, &item{idx: i})
 	}
 	return items
 }
@@ -127,7 +127,7 @@ func BenchmarkForPointer(b *testing.B) {
 		length := len(items)
 		var tmp int
 		for k := 0; k < length; k++ {
-			tmp = items[k].id
+			tmp = items[k].idx
 		}
 		_ = tmp
 	}
@@ -138,7 +138,7 @@ func BenchmarkRangePointer(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		var tmp int
 		for _, item := range items {
-			tmp = item.id
+			tmp = item.idx
 		}
 		_ = tmp
 	}
