@@ -1,3 +1,4 @@
+/*https://gfw.go101.org/article/channel-closing.html*/
 package main
 
 import (
@@ -195,6 +196,11 @@ func main() {
   wgReceivers.Wait()
 }
 
+/* 使用stopCh通道关闭通道 当close(stopCh)时，case <-stopCh 满足条件 */
+/*
+Q:为什么select关键字可以检测通道关闭事件？
+A:select实现：函数selectnbrecv，如果当前通道是Empty且被关闭，返回true
+*/
 /* 这种情况 没有关闭task任务通道；无需关闭，当一个通道不再被任何协程使用，会被回收掉 */
 
 /* 3:多个接收者与发送者 */
