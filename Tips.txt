@@ -36,3 +36,77 @@ Go语言格式化输出动词：
 （5）func Intn(n int) int
 返回一个取值范围在[0,n)的伪随机int值，如果n<=0会panic
 /********************************************************************************************/
+strconv.Itoa()函数的参数是一个整型数字，它可以将数字转换成对应的字符串类型的数字
+
+func main() {
+	string_number := 97
+	result := strconv.Itoa(string_number)
+ 
+	fmt.Println(result)
+	fmt.Printf("%T\n", result)
+}
+输出：
+97 
+string
+
+string函数的参数若是一个整型数字，它将该整型数字转换成ASCII码值等于该整形数字的字符
+func main() {
+	string_number := 97
+	result := string(string_number)
+	fmt.Println(result)
+	fmt.Printf("%T\n", result)
+}
+输出：
+a 
+string
+/********************************************************************************************/
+go func(id int) {
+/*id == value*/
+}(value)
+
+func main() {
+    for i := 0; i < 100; i++ {
+        go func() {
+            fmt.Println(i)
+        }()
+    }
+} 
+输出：
+100
+...
+...
+100
+
+func main() {
+    for i := 0; i < 100; i++ {
+        go func(i int) {
+            fmt.Println(i)
+        }(i)
+    }
+}
+输出：
+1
+2
+...
+99
+
+type Per struct {
+    name string
+    bh   int
+}
+
+func main() {
+    p := &Per{}
+    for i := 0; i < 100; i++ {
+        p.bh = i
+        go func(p *Per) {
+            fmt.Println(p)
+        }(p)
+    }
+}
+输出：
+&{99}
+&{99}
+...
+&{99}
+/********************************************************************************************/
