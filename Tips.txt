@@ -49,6 +49,16 @@ func main() {
 97 
 string
 
+strconv包提供了简单数据类型之间的类型转换功能。可以将简单类型转换为字符串，也可以将字符串转换为其它简单类型。
+
+这个包里提供了很多函数，大概分为几类：
+
+字符串转int：Atoi()
+int转字符串: Itoa()
+ParseTP类函数将string转换为TP类型：ParseBool()、ParseFloat()、ParseInt()、ParseUint()。因为string转其它类型可能会失败，所以这些函数都有第二个返回值表示是否转换成功
+其它类型转string类型：FormatBool()、FormatFloat()、FormatInt()、FormatUint()
+AppendTP类函数用于将TP转换成字符串后append到一个slice中：AppendBool()、AppendFloat()、AppendInt()、AppendUint()
+
 string函数的参数若是一个整型数字，它将该整型数字转换成ASCII码值等于该整形数字的字符
 func main() {
 	string_number := 97
